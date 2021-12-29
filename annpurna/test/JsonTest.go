@@ -1,0 +1,22 @@
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+)
+
+type AnnpurnaWallet struct {
+	Id        string `json:"id"`
+	Owner     string `json:"owner"`
+	secret    string `json:"secret"`
+	createdBy string `json:"createdBy"`
+	value     uint64 `json:"value"`
+	createdOn uint64 `json:"createdOn"`
+}
+
+func test() {
+	s := string(`{"id":"5889d01ef27a12d6dad9b5aa101faf60d6ad0555eb91c0d0f10ca777082c8825","createdOn":0,"owner":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiOmvDKFReT7WqY6KhF2JoVUMHdqwgCELKlVhwVEa5sO0KxefGfgcHK1NdqgFd29UPsu4yO/B2K00FiyBByFxEmiBiOyfchss4g5FGRVXHJbMPM0/5crSztt2QwFxGAclxac/iGBXXuubOwH2W6HtWOzr+8sjcW1tXsxQTSNP9xpkDI/nWtOJopWARutwN1mO5pXvZL7HL+PuaUn1ytQgvCpPdKQ7NhrEPuIqrnRIyxgSHi4WZft6BPOqomJgr7ycn1qf+HNevtP1iY4CeiT8tTdLxml6XnXqxCb4/eyvaiMDxjOyewc5euJykVcE5zuhdEE4yDawyYox34ghZeMcYwIDAQAB","secret":"MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCI6a8MoVF5PtapjoqEXYmhVQwd2rCAIQsqVWHBURrmw7QrF58Z+BwcrU12qAV3b1Q+y7jI78HYrTQWLIEHIXESaIGI7J9yGyziDkUZFVcclsw8zT/lytLO23ZDAXEYByXFpz+IYFde65s7AfZboe1Y7Ov7yyNxbW1ezFBNI0/3GmQMj+da04milYBG63A3WY7mle9kvscv4+5pSfXK1CC8Kk90pDs2GsQ+4iqudEjLGBIeLhZl+3oE86qiYmCvvJyfWp/4c16+0/WJjgJ6JPy1N0vGaXpederEJvj97K9qIwPGM7J7Bzl64nKRVwTnO6F0QTjINrDJijHfiCFl4xxjAgMBAAECggEBAIanBaFvWtjbA3YZGYRbFkwUf+kwttwdI4UMGittn/6LRTwIbFK3ILbXftMPJukzFfD4nZEJtGVs20hflrqzmihXneZTifFIZtkg3bZwtY8JhG7cElbnJnOJhgMafOb7yJtfBO4UinlxUOc04911ISCPSvwF6qLY03MjkGp9K11DJEIzAj4ixfehbb1G5KuC/5JCZ2qxfbLRugyBLAxCjk9AQ4V9J7+S6aJl7zQs2EL9chodBcID+8m6TK4gwAthQ6T7DDvuHHYttbS+9mS+d30CzwfSW9mgegF8yW8i672cdiv0eaTRDxXWBhsCh4886o2FSFX9nPuX7WSuA/7MfLkCgYEA2D/Xuzsm3sa0UcDyFZhsEUDX37JE9HZmVF/TwE6QWQC1aoIQiYEWu5y5dqdHOGAi83FPk/omJkmAnCL67TRH34MI5HTmZ1npggtZfCi+CXT9mpfZHkUz/08CGepnzeHgP6hHYDFBJ3a8B70e/Z5YerxUNwizGEEilikdck07vH0CgYEAohR115eU+rq92vuBAoBtBhelDm8LLBeMWXF5MYknmzGUG/w6xwE4J4M9k5D99xk1Nji9ARGVfmHVjgNuhzGPZKN8zzKxLu8nAU6UwYe6fci5ygzyAsYVYL1sSbjs+zxDqBgtaYuwtetcotWtjfzs6ifAX2rF0CwlHfTIoR7S8l8CgYEAp9O0a7yWiCKSYzhpKNVoWWOHpjZGSatx812DiyXt5QUlxok2qGCk8enKDgn4vgnuVhzEc8WZwfEdfQ+wylLezNp3FkabYe5nyONiCXfdNJ21DDt454MxvZzltpMzCJeaYA0Lh93yANynRSJDYPV5GZf7i9KWm+ZBH2S9U64ZBEkCgYBzQvWiwetyewa1ChJuwwHFSV9Z6mIZkw1+NhInxg/ib9mSJUdvalCS2OQbYwsYhFaxHpxafDTB0bVa7tnVTstYmGMTvkr+w5gLd+SV1H4tIWfuZlJc4p0lVNADhX0SFYNPsRHqcyrR1HTmX+qyhOG+i1JlCLtwFVS3/vIGkrMVJQKBgQCpJb+2wlGu0Rxhyf/+IcSLLJ/XJvy83+1aNqxJW26RCMTG8pgIL/mmXFXZgmbmFcO10aHN4q1X/DmmRQegK198dFNvW06c0Y7sihMx6by6HkWJuPknF+5gK+h+KBXIrPxwLfKGiZKXCTfJ+gNSojABC/X+nAvmCI41+i0kneJosg\u003d\u003d"}`)
+	data := AnnpurnaWallet{}
+	json.Unmarshal([]byte(s), &data)
+	fmt.Printf("Operation:", data)
+}
