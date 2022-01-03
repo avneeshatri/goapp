@@ -37,7 +37,7 @@ const (
 )
 
 func (s *WalletContract) CreateWallet(ctx contractapi.TransactionContextInterface,
-	walletJson string, signature string) (string, error) {
+	walletJson string, signature string) (AnnpurnaWallet, error) {
 	Log.Println("Request to Create Wallet")
 
 	initiator, err := hlfUtil.GetTxInitatorUserID(ctx)
@@ -66,19 +66,19 @@ func (s *WalletContract) CreateWallet(ctx contractapi.TransactionContextInterfac
 	Log.Println("Wallet Json:", string(walletAsBytes))
 	if hlfUtil.UpdateStateInLeger(ctx, wallet.Id, wallet) {
 
-		//wallet.Secret = ""
-		//wallet.Owner = ""
+		/*wallet.Secret = ""
+		wallet.Owner = ""
 		walletAsBytes, _ = json.Marshal(wallet)
 		jsonStr := string(walletAsBytes)
-		Log.Println("Response:", jsonStr)
+		Log.Println("Response:", jsonStr)*/
 
-		return jsonStr, nil
+		return wallet, nil
 	}
 	panic("Wallet creation failed")
 }
 
 func (s *WalletContract) CreatePartnerWallet(ctx contractapi.TransactionContextInterface,
-	orgMspId string) string {
+	orgMspId string) AnnpurnaWallet {
 	Log.Println("Request to create parnter wallet ", orgMspId)
 	clientOrgMspId, err := hlfUtil.GetClientOrgId(ctx)
 	if err != nil {
@@ -97,10 +97,11 @@ func (s *WalletContract) CreatePartnerWallet(ctx contractapi.TransactionContextI
 	walletAsBytes, _ := json.Marshal(wallet)
 	Log.Println("Wallet Bytes size:", len(walletAsBytes))
 	ctx.GetStub().SetEvent(CREATE_WALLET_EVENT, walletAsBytes)
-	jsonStr := string(walletAsBytes)
-	Log.Println("Response:", jsonStr)
+	/*	jsonStr := string(walletAsBytes)
+		Log.Println("Response:", jsonStr) */
 	if hlfUtil.UpdateStateInLeger(ctx, wallet.Id, wallet) {
-		return jsonStr
+		//return jsonStr
+		return wallet
 	}
 	panic("Couldnt save asset")
 }
